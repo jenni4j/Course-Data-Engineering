@@ -48,6 +48,25 @@ SELECT * FROM test;
 
 -- Exit
 \q
-  
+
+-- Count records (should return 1,369,765 rows)
+SELECT COUNT(*) FROM yellow_taxi_trips;
+
+-- View sample data
+SELECT * FROM yellow_taxi_trips LIMIT 10;
+
+-- Basic analytics
+SELECT 
+    DATE(tpep_pickup_datetime) AS pickup_date,
+    COUNT(*) AS trips_count,
+    AVG(total_amount) AS avg_amount
+FROM yellow_taxi_trips
+GROUP BY DATE(tpep_pickup_datetime)
+ORDER BY pickup_date;
+
+
+---- Running pdAdmin instructions: https://github.com/alexeygrigorev/workshops/tree/main/dezoomcamp-docker
+---- Docker compose instructions: ^
+
 '''
 
